@@ -32,7 +32,7 @@ namespace ApiControllers.Controllers
         [HttpPut]
         public Reservation Put([FromBody] Reservation reservation) => _repository.UpdateReservation(reservation);
 
-        [HttpPatch]
+        [HttpPatch("{id}")]
         public StatusCodeResult Patch(int id, [FromBody] JsonPatchDocument<Reservation> reservationPatch)
         {
             var reservation = Get(id);
