@@ -11,7 +11,6 @@ namespace ApiControllers.Controllers
 
         [HttpGet("object/{format?}")]
         [FormatFilter]
-        [Produces("application/json", "application/xml")]
         public Reservation GetObject() => new Reservation {ReservationId = 100, ClientName = "Joe", Location = "Board Room"};
     }
 }

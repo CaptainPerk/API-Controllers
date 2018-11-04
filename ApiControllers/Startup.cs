@@ -14,7 +14,12 @@ namespace ApiControllers
             services.AddSingleton<IRepository, MemoryRepository>();
             services.AddMvc()
                 .AddXmlDataContractSerializerFormatters()
-                .AddMvcOptions(o => o.FormatterMappings.SetMediaTypeMappingForFormat("xml", new MediaTypeHeaderValue("application/xml")));
+                .AddMvcOptions(o =>
+                {
+                    o.FormatterMappings.SetMediaTypeMappingForFormat("xml", new MediaTypeHeaderValue("application/xml"));
+                    o.RespectBrowserAcceptHeader = true;
+                    o.ReturnHttpNotAcceptable = true;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
