@@ -11,7 +11,7 @@ namespace ApiControllers
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IRepository, MemoryRepository>();
-            services.AddMvc();
+            services.AddMvc().AddXmlDataContractSerializerFormatters();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
